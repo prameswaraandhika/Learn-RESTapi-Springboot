@@ -1,0 +1,4 @@
+@RestControler anotasi pada spring gabungan dari @Controller dan @RensponseBody.
+Menandakan sebuah class merupakan controller yang akan menangani permintaan http dan menghasilkan data dalam format
+tertentu(Seperti JSON/XML) sebagai renspons.
+
