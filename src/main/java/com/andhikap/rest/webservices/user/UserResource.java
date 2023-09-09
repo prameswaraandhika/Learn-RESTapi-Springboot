@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import com.andhikap.rest.webservices.user.exception.UserNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +31,7 @@ public class UserResource {
         User user = service.findOne(id);
 
         if (user == null) {
-            throw new UserNotFoundException("id: " + id);
+            throw new UserNotFoundException("User with ID " + id + " not found");
             // return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(user);
@@ -42,7 +43,7 @@ public class UserResource {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         User savedUser = service.save(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(savedUser.getId())
