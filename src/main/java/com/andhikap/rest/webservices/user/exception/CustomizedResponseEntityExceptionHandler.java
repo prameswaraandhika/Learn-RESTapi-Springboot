@@ -33,7 +33,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
             msg.append(error.getDefaultMessage()).append(" ");
         });
         ErrorDetails errorDetails = new ErrorDetails(LocalDate.now(), msg.toString(), request.getDescription(false));
-        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
 
