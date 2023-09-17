@@ -1,6 +1,8 @@
 package com.andhikap.rest.webservices.filtering;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public record SomeUser(String username, @JsonIgnore String password, @JsonIgnore String repassword)  {
+@JsonFilter("SomeUserFilter")
+public record SomeUser(String username,  String password,  String repassword)  {
 }
